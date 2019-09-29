@@ -52,9 +52,8 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 	private JTextArea extSet,extFormula,extResult;
 	
 	private JButton intersection,union,recombination,opposite;     //关系运算
-	private JButton mapJudge;                //映射判断
-	//private JButton judgeRelation,judgeNature;                     //关系与性质判断
-	private JButton  zf,fzf,dc,fdc,cd,xr,dj,px;
+	private JButton mapJudge;                //映射判断                   
+	private JButton  zf,fzf,dc,fdc,cd,xr,dj,px;//关系与性质判断
 	private JButton reflexive,symmetry,transitivity;                //闭包
 	private JButton divide;											//通过等价划分集合
 	private JButton ext;
@@ -114,10 +113,6 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 		extSet.setFont(new Font("黑体",Font.PLAIN,20));
 		extFormula.setFont(new Font("黑体",Font.PLAIN,20));
 		extResult.setFont(new Font("黑体",Font.PLAIN,20));
-		
-		
-//		judgeRelation = new JButton("关系判断");
-//		judgeNature = new JButton("性质判断");
 		
 		 zf = new JButton("自    反"); //映射判断
 		fzf = new JButton("反自反");
