@@ -179,15 +179,16 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 		JLabel headline = new JLabel("关系相关说明");
 		headline.setFont(new Font("粗体",Font.PLAIN,20));//设置字体
 		
-		explain.setText("1、相关的运算式子要规范输入\n" + 
-				"2、元素尽量不要使用“，“、”{“，“}”、“（”、”）”等特殊字符\n" + 
-				"3、符号使用为英文符号，使用中文符号将无法得到正确结果\n" + 
-				"4、映射判断功能可能存在一下漏洞，一些无法判断的式子，还有待系统升级\n" + 
-				"5、最后感谢您的使用\n");
+		explain.setText("1、此系统用于关系和相关计算\r\n" + 
+				"2、相关的运算式子要规范输入\r\n" + 
+				"3、元素尽量不要使用“，“、”{“，“}”、“（”、”）”等特殊字符\r\n" + 
+				"4、符号使用为英文符号，使用中文符号将无法得到正确结果\r\n" + 
+				"5、映射判断功能可能存在一下漏洞，一些无法判断的式子，还有待系统升级\r\n" + 
+				"6、最后感谢您的使用\r\n" );
 		StyledDocument doc = explain.getStyledDocument();//------model---把属性集、文本内容结合起来
 		SimpleAttributeSet setSize = new SimpleAttributeSet();//---属性集---把要加的属性先放一起---再加入文本内容
 		StyleConstants.setFontSize(setSize,15);
-		doc.setCharacterAttributes(0,128,setSize,true);
+		doc.setCharacterAttributes(0,144,setSize,true);
 		explain.setBackground(null);
 		explain.setEditable(false);
 		

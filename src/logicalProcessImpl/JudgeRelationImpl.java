@@ -1,7 +1,6 @@
 package logicalProcessImpl;
 
 import logicalProcess.JudgeRelation;
-import util.JudgeInput;
 
 public class JudgeRelationImpl extends JudgeNatureImpl implements JudgeRelation  {
 	boolean zf = false,fzf = false,dc = false,fdc = false,xr = false,dj = false,px = false,cd = false;
