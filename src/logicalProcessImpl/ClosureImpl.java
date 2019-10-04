@@ -43,6 +43,10 @@ public class ClosureImpl implements Closure {
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
 		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			result.append("非法输入");
+		}
+		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
 		
@@ -107,8 +111,11 @@ public class ClosureImpl implements Closure {
 		}
 		
 		String[] setX = StringCutting.setToNum(set);
-		//System.out.println("formula="+formula);
 		String[] pair = StringCutting.cutRelation(formula);
+		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			result.append("非法输入");
+		}
 		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
@@ -178,6 +185,10 @@ public class ClosureImpl implements Closure {
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
 		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			result.append("非法输入");
+		}
+		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
 		
@@ -208,7 +219,7 @@ public class ClosureImpl implements Closure {
 			for(i=0;i<lengthX;i++) {
 				if(array[i][j] !=0 ) {
 					for(k=0;k<lengthX;k++) {
-						array[i][k] = array[i][k] +array[j][k];
+						array[i][k] = array[i][k]|array[j][k];
 					}
 				}
 			}
@@ -216,7 +227,7 @@ public class ClosureImpl implements Closure {
 		
 		for(i=0;i<lengthX;i++) {
 			for(j=0;j<lengthX;j++) {
-				if(array[i][j] != 0) {
+				if(array[i][j] == 1) {
 					result.append("("+setX[i]+","+setX[j]+"),");
 				}
 			}

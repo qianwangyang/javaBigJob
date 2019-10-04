@@ -1,15 +1,10 @@
 package util;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class JudgeInput {
 	
-//	public static boolean judgeFormula(String set,String formula) {
-//		
-//		if(set.charAt(0) != '{' || formula.charAt(0) != '{' 
-//				   || set.charAt(set.length()-1) != '}' || formula.charAt(formula.length()-1) != '}' ) {
-//					return false;
-//				}
-//		return false;
-//	}
 	/**
 	 * 判断关系形式是否正确
 	 * @param formula
@@ -84,5 +79,25 @@ public class JudgeInput {
 		}
 		return true;
 		
+	}
+	
+	/**
+	 * 查看关系式中的元素是否都来自集合，是返回true
+	 * @param set
+	 * @param formula
+	 * @return
+	 */
+	public static boolean IncludeSet(String[] set,String[] formula) {
+		Set<String> setX = new HashSet<String>();
+		for(int i=0;i<set.length;i++) {
+			setX.add(set[i]);
+		}
+		for(int i=0;i<formula.length;i++) {
+			String[] str = StringCutting.betweenToNun(formula[i]);
+			if(setX.add(str[1]) || setX.add(str[0])) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

@@ -3,7 +3,7 @@ package logicalProcessImpl;
 import logicalProcess.JudgeRelation;
 
 public class JudgeRelationImpl extends JudgeNatureImpl implements JudgeRelation  {
-	boolean zf = false,fzf = false,dc = false,fdc = false,xr = false,dj = false,px = false,cd = false;
+	boolean zf ,fzf = false,dc = false,fdc = false,cd = false;
 	
 	public String compatbility(String set,String formula) {
 		
@@ -31,9 +31,9 @@ public class JudgeRelationImpl extends JudgeNatureImpl implements JudgeRelation 
 	public String partialOrder (String set,String formula) {
 		
 		zf = reflexivity(set,formula);
-		fzf = antiSymmetry(set,formula);
+		fdc = antiSymmetry(set,formula);
 		cd = transitivity(set,formula);
-		if(zf && fzf && cd) {
+		if(zf && fdc && cd) {
 			return "偏序关系成立！";
 		}
 		return "偏序关系不成立！";

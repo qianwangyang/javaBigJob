@@ -28,6 +28,10 @@ public class JudgeNatureImpl implements JudgeNature{
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
 		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			return false;
+		}
+		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
 		
@@ -42,12 +46,8 @@ public class JudgeNatureImpl implements JudgeNature{
 			judge = false;
 			for(j=0;j<lengthF;j++) {
 				String[] strF = StringCutting.betweenToNun(pair[j]);
-				System.out.println("strF[0]=" + strF[0]);
-				System.out.println("strF[1]=" + strF[1]);
-				System.out.println("setX=" + setX[i]);
 				if(setX[i].equals(strF[0]) && setX[i].equals(strF[1])){
 					judge = true;
-					System.out.println("judge="+judge);
 					break;
 				}
 			}
@@ -74,6 +74,10 @@ public class JudgeNatureImpl implements JudgeNature{
 		
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
+		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			return false;
+		}
 		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
@@ -107,6 +111,10 @@ public class JudgeNatureImpl implements JudgeNature{
 		
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
+		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			return false;
+		}
 		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
@@ -144,7 +152,7 @@ public class JudgeNatureImpl implements JudgeNature{
 	}
 	
 	public boolean antiSymmetry(String set,String formula) {
-		
+		//当关系式为空时或关系式为空且关系式也为空，返回true
 		if(formula.equals("{}") || set.equals("{}")&&formula.equals("{}")) {
 			return true;
 		}   
@@ -158,6 +166,10 @@ public class JudgeNatureImpl implements JudgeNature{
 		
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
+		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			return false;
+		}
 		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
@@ -185,7 +197,7 @@ public class JudgeNatureImpl implements JudgeNature{
 		
 		for(i=0;i<lengthX;i++) {
 			for(j=0;j<lengthX;j++) {
-				if(array[i][j] ==1) {
+				if(array[i][j] ==1 && i != j) {
 					if(array[j][i] == 1) {
 						return false;
 					}
@@ -212,6 +224,10 @@ public class JudgeNatureImpl implements JudgeNature{
 		String[] setX = StringCutting.setToNum(set);
 		String[] pair = StringCutting.cutRelation(formula);
 		
+		if(!JudgeInput.IncludeSet(setX, pair)) {
+			return false;
+		}
+		
 		int lengthX = StringCutting.repetition(setX);
 		int lengthF = StringCutting.repetition(pair);
 		
@@ -236,55 +252,29 @@ public class JudgeNatureImpl implements JudgeNature{
 				}
 			}
 			array[row][list] = 1;
-			array1[row][list] =1;
+			array1[row][list] =1;//copy多一个副本
 		}
-		
 		//Warshall算法，求闭包；
 		for(j=0;j<lengthX;j++) {
 			for(i=0;i<lengthX;i++) {
 				if(array[i][j] !=0) {
 					for(k=0;k<lengthX;k++) {
-						array[i][k] = array[i][k] + array[j][k];
+						array[i][k] = array[i][k]|array[j][k];
 					}
 				}
 			}
 		}
 		
-		//循环判断数组array1中一的位置，在传递闭包中是否有，若没有返回false
+		//循环判断数组array与array1是否相等，不相等false
 		for(i=0;i<lengthX;i++) {
 			for(j=0;j<lengthX;j++) {
-				if(array1[i][j] != 0) {
-					if(array[i][j] == 0) {
-						return false;
-					}
+				if(array[i][j] != array1[i][j]) {//闭包与副本比较
+					return false;
 				}
 			}
 		}
 		return true;			
 	}
-	
-//	public int[][] getBivariateTable(int lengthX,int lengthF,String[] pair,String[] setX) {
-//		
-//		int i = 0;
-//		int j = 0;
-//		int row = 0;
-//		int list = 0;
-//		int[][] array = new int[lengthX][lengthX];
-//		for(i=0;i<lengthF;i++) {
-//			String[] strF = StringCutting.betweenToNun(pair[i]);
-//			for(j=0;j<lengthX;j++) {
-//				if(strF[0].equals(setX[j])) {
-//					row = j;
-//				}
-//				if(strF[1].equals(setX[j])) {
-//					list = j;
-//				}
-//			}
-//			array[row][list] = 1;
-//		}
-//		return array;
-//		
-//	}
 }
 
 

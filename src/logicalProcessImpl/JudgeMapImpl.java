@@ -26,15 +26,16 @@ public class JudgeMapImpl implements JudgeMap{
 		int lengthY = StringCutting.repetition(domainY);
 		int lengthF = StringCutting.repetition(formula);
 		
-		if(lengthX!=lengthF) {
-			return "映射关系不成立，存在定义域无对应值";
+		if(lengthX > lengthF) {
+			return "映射关系不成立，存在X无对应值";
+		}
+		if(lengthX <lengthF) {
+			return "映射关系不成立，存在X值不在定义域";
 		}
 		
 		Set<String> setX = new HashSet<String>();
 		for(i=0;i<lengthF;i++) {
-			
 			String[] strX = StringCutting.betweenToNun(formula[i]);
-			
 			if(!setX.add(strX[0])) {
 				return "映射关系不成立，存在X有多个Y";//X被多次使用，映射关系成立
 			}
@@ -43,13 +44,11 @@ public class JudgeMapImpl implements JudgeMap{
 		//验证X是否在定义域；
 		for(i=0;i<lengthX;i++) {
 			if(setX.add(domainX[i])) {
-				return "关系式中存在X不在定义域中";
+				return "映射不成立，存在X值没有Y值";
 			}
 		}
-		
 		Set<String> setY1 = new HashSet<String>();
 		for(i=0;i<lengthY;i++) {
-			//System.out.println("strY["+i+"]="+domainY[i]);
 			setY1.add(domainY[i]);
 		}
 		
@@ -79,33 +78,3 @@ public class JudgeMapImpl implements JudgeMap{
 	}
 		
 }
-
-
-
-
-
-//Set<String> setX = new HashSet<String>();
-//for(int i = 0;i<lengthX;i++) {
-//	for(int j = 0;j<lengthF;j++) {
-//		String[] strF = StringCutting.cutRelation(formula[j]);
-//		if(domainX[i].equals(strF[0])) {
-//			if(!setX.add(domainX[i])) {
-//				return "映射关系不成立，存在Y有多个Y";//X被多次使用，映射关系不成立
-//			}
-//		}
-//	}
-//}
-
-
-
-//for(int i=0;i<lengthY;i++) {
-//	Set<String> set = new HashSet<String>();
-//	for(int j=0;j<lengthF;j++) {
-//		String[] strF = StringCutting.cutRelation(formula[j]);
-//		if(domainY[i].equals(strF[1])) {
-//			if(!set.add(domainY[i])) {
-//				judgeY = false;//Y被多次使用
-//			}
-//		}
-//	}
-//}

@@ -149,7 +149,7 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 		
 		list = new JList(function);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setSelectedIndex(0);
+		//list.setSelectedIndex(0);
 		list.addListSelectionListener(this);
 		list.setFont(new Font("粗体",Font.BOLD,15));
 		
@@ -664,15 +664,11 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 			try {
 				String setText = set.getText();
 				String formulaText = formula.getText();
-				System.out.println("setText:"+setText+'\n'+"formulaText:"+formulaText);
 				
-				if(setText.charAt(0) != '{' || formulaText.charAt(0) !='{' 
-				|| setText.charAt(setText.length()-1) !='}' || formulaText.charAt(formulaText.length()-1) != '}') {
+				if(!JudgeInput.judgeSet(setText)) {
 					judgeResult.setText("非法输入！");
 				}else {
-					System.out.println("setText:"+setText+'\n'+"formulaText:"+formulaText);
 					judge = judgeNature.reflexivity(setText, formulaText);
-					System.out.println(judge);
 					if(judge) {
 						judgeResult.setText("自反性成立！");
 					}
@@ -689,7 +685,7 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 				String setText = set.getText();
 				String formulaText = formula.getText();
 				
-				if(JudgeInput.judgeSet(setText))
+				if(!JudgeInput.judgeSet(setText))
 				{
 					judgeResult.setText("非法输入！");
 				}
@@ -699,7 +695,7 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 					judgeResult.setText("反自反性成立！");
 				}
 				
-				else if(JudgeInput.judgeFormula(formulaText)) 
+				else if(!JudgeInput.judgeFormula(formulaText)) 
 				{
 					judgeResult.setText("非法输入!");
 				}else 

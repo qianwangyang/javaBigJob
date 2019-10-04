@@ -23,6 +23,11 @@ public class OperationImpl implements Operation{
 			result.append("非法输入！");
 			return result;
 		}
+		//当集合都为空时，返回{}
+		if(formula1.equals("{}")&&formula2.equals("{}")) {
+			result.append("{}");
+			return result;
+		}
 		String[] str1 = StringCutting.setToNum(formula1);
 		String[] str2 = StringCutting.setToNum(formula2);
 		
@@ -83,7 +88,9 @@ public class OperationImpl implements Operation{
 		}
 		
 		i = result.length() - 1;
-		result.deleteCharAt(i);
+		if(i>1){
+			result.deleteCharAt(i);
+		}
 		result.append("}");
 		return  result;
 	}
