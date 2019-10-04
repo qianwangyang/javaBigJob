@@ -32,11 +32,8 @@ public class StringCutting {
 	 * @return
 	 */
 	public static String[] cutRelation(String formula) {
-//		System.out.println("1111");
 		String strF = formula.substring(2,formula.length()-2);
-//		System.out.println("2222");
 		String[] str = strF.split("\\),\\(");
-//		System.out.println("3333");
 		return str;	
 	}
 	
@@ -57,23 +54,7 @@ public class StringCutting {
 				formula[index] = formula[i];
 				index++;
 			}
-		}
-		
-//		for(int i = 0;i<length;i++) {
-//		for(int j = i+1;j<length;j++) {
-//			if(formula[i].equals(formula[j])) {
-//				for(int k = j;k<length-1;k++) {
-//					formula[k] = formula[k+1];
-//				}
-//				length--;
-//			}
-//		}
-//	}
-//	String[] str = new String[length];
-//	for(int i = 0;i<length;i++) {
-//		str[i] = formula[i];
-//	}
-		
+		}	
 		return index;
 	}
 

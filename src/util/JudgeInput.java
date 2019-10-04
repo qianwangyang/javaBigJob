@@ -62,7 +62,7 @@ public class JudgeInput {
 	}
 	
 	/**
-	 * 判断集合形式是非正确
+	 * 判断集合形式是否正确
 	 * @param set
 	 * @return
 	 */
