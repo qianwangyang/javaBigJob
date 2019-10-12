@@ -1,9 +1,10 @@
 package logicalProcessImpl;
 
+import logicalProcess.Extremum;
 import util.JudgeInput;
 import util.StringCutting;
 
-public class ExtremumImpl extends JudgeNatureImpl {
+public class ExtremumImpl extends JudgeNatureImpl implements Extremum {
 	
 	public String getExtremum(String set,String formula) {
 		

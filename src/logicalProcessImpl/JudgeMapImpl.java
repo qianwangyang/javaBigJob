@@ -29,9 +29,6 @@ public class JudgeMapImpl implements JudgeMap{
 		if(lengthX > lengthF) {
 			return "映射关系不成立，存在X无对应值";
 		}
-		if(lengthX <lengthF) {
-			return "映射关系不成立，存在X值不在定义域";
-		}
 		
 		Set<String> setX = new HashSet<String>();
 		for(i=0;i<lengthF;i++) {
@@ -40,6 +37,10 @@ public class JudgeMapImpl implements JudgeMap{
 				return "映射关系不成立，存在X有多个Y";//X被多次使用，映射关系成立
 			}
 		}
+		
+		if(lengthX <lengthF) {
+		return "映射关系不成立，存在X值不在定义域";
+	}
 		
 		//验证X是否在定义域；
 		for(i=0;i<lengthX;i++) {
