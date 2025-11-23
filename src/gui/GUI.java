@@ -874,6 +874,7 @@ public class GUI extends JFrame implements ListSelectionListener,ActionListener 
 		mainJFrame.pack();
 		mainJFrame.setLocationRelativeTo(null);
 		mainJFrame.setVisible(true);
+		
 	}
 
 }
